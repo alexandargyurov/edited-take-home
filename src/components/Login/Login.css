@@ -52,3 +52,7 @@
   font-weight: 700;
   line-height: normal;
 }
+
+.loginForm > button:disabled {
+  opacity: 0.6;
+}
