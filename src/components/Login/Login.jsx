@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useFormik } from "formik";
 import "./Login.css";
 
@@ -8,9 +9,7 @@ export function Login() {
       password: "",
       rememberMe: false,
     },
-    onSubmit: (values) => {
-      console.log(values);
-    },
+    onSubmit,
     validate,
   });
 
@@ -39,6 +38,10 @@ export function Login() {
     }
 
     return errors;
+  }
+
+  async function onSubmit(values) {
+    axios.post("/login", values);
   }
 
   return (
