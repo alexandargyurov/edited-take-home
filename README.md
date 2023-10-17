@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Demo:
+[edited-take-home.vercel.app](edited-take-home.vercel.app)
+
 ## Challenge to be solved at home:
 
 Using your favourite frontend framework/library implement a simple login page
