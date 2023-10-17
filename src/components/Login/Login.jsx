@@ -12,7 +12,7 @@ export function Login() {
 
   const formik = useFormik({
     initialValues: {
-      email: "",
+      email: localStorage.getItem("userEmail") ?? "",
       password: "",
       rememberMe: false,
     },
@@ -50,7 +50,14 @@ export function Login() {
   async function onSubmit(values) {
     await axios
       .post("/login", values)
-      .then((res) => setUser({ email: res.data.email }))
+      .then((res) => {
+        setUser({ email: res.data.email });
+        if (values.rememberMe) {
+          localStorage.setItem("userEmail", res.data.email);
+        } else {
+          localStorage.removeItem("userEmail");
+        }
+      })
       .catch((e) => setResError(e.response.data.message));
   }
 
