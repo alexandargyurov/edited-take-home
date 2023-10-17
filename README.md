@@ -1,6 +1,31 @@
-# Getting Started with Create React App
+# Edited Take Home Test
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Challenge to be solved at home:
+
+Using your favourite frontend framework/library implement a simple login page
+following the wireframe.
+
+Please don’t spend more than 4 hours for completion, but if you feel it’s not enough,
+take all the time you need.
+
+Details about the login page:
+● Login page should have username/password input boxes and remember me
+checkbox
+● Username field should have a validation for a valid email address
+● Password field should have a validation for password with minimum length of
+6 characters and at least one letter and one digit in it
+● When remember me checkbox is selected, next loading of login page should
+replace the username input box with the saved email from previous login
+● On successful login the login form needs to be removed from the page and
+label `Hi, {email}` needs to be visible + Logout link.
+● When logout link is clicked, login form needs to be shown again
+
+In order to simulate the backend you can use mocking. One solution is:
+https://mswjs.io/docs/getting-started/mocks/rest-api
+Email: “hello@edited.com” / Password: “hello123” should be allowed and you can
+use it to simulate successful login.
 
 ## Available Scripts
 
