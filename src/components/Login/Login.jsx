@@ -1,8 +1,15 @@
 import axios from "axios";
+import { useContext, useState } from "react";
 import { useFormik } from "formik";
+import { AuthContext } from "../../App";
+import { Button } from "../Button/Button";
+
 import "./Login.css";
 
 export function Login() {
+  const [resError, setResError] = useState();
+  const [, setUser] = useContext(AuthContext);
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -41,7 +48,10 @@ export function Login() {
   }
 
   async function onSubmit(values) {
-    axios.post("/login", values);
+    await axios
+      .post("/login", values)
+      .then((res) => setUser({ email: res.data.email }))
+      .catch((e) => setResError(e.response.data.message));
   }
 
   return (
@@ -78,9 +88,11 @@ export function Login() {
           <label htmlFor="rememberMe">Remember me</label>
         </div>
 
-        <button type="submit" disabled={!formik.isValid}>
+        {resError && <p>{resError}</p>}
+
+        <Button type="submit" disabled={!formik.isValid}>
           Login Now
-        </button>
+        </Button>
       </form>
     </div>
   );

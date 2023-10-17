@@ -3,14 +3,13 @@ import { rest } from 'msw'
 
 export const handlers = [
     rest.post('/login', async (req, res, ctx) => {
-        // Persist user's authentication in the session
-        // sessionStorage.setItem('is-authenticated', 'true')
+        const { email, password, rememberMe } = await req.json()
 
-        console.log(await req.json())
+        // For security don't say what is wrong.
+        if (email !== "hello@edited.com" || password !== "hello123") {
+            return res(ctx.status(401), ctx.json({ message: "Invalid email address or password" }));
+        }
 
-        return res(
-            // Respond with a 200 status code
-            ctx.status(200),
-        )
+        return res(ctx.status(200), ctx.json({ email }));
     }),
 ]
